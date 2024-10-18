@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
+caminho = str(Path(__file__).resolve().parent)
 
 #streamlit run app.py
 
@@ -10,8 +12,8 @@ st.title("Meu primeiro dashboard")
 st.header("Esse é um header")
 
 # Carregar e exibir o dataframe
-caminho = "C:\\Ludmila\\faculdade\\ProjetoCienciasDadosI\\frontend\\data\\ibov.csv"
-df = pd.read_csv(caminho)
+#caminho = "C:\\Ludmila\\faculdade\\ProjetoCienciasDadosI\\frontend"
+df = pd.read_csv(caminho+"\\data\\ibov.csv")
 
 # Exemplo de Markdown
 st.markdown(
