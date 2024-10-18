@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+#streamlit run app.py
+
 # Título e cabeçalho do app
 st.title("Meu primeiro dashboard")
 st.header("Esse é um header")
