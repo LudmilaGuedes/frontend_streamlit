@@ -11,7 +11,6 @@ caminho = Path(__file__).resolve().parent / "data" / "ibov.csv"
 st.title("Meu primeiro dashboard")
 st.header("Esse é um header")
 
-
 # Exemplo de Markdown
 st.markdown(
     '''
@@ -43,10 +42,13 @@ with abas[1]:
 # Aba do DataFrame
 with abas[2]:
     st.subheader("Exibição do DataFrame")
+    
+    # Verificar se o arquivo existe e, em caso afirmativo, exibir o DataFrame
     if caminho.exists():
+        df = pd.read_csv(caminho)
         st.dataframe(df)
     else:
-        st.error("DataFrame não pode ser exibido, pois o arquivo não foi encontrado.")
+        st.error("Arquivo não encontrado: " + str(caminho))
 
 # Aba do gráfico
 with abas[3]:
