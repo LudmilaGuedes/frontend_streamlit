@@ -3,17 +3,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from pathlib import Path
-caminho = str(Path(__file__).resolve().parent)
 
-#streamlit run app.py
+# Obter o diretório do arquivo atual e configurar o caminho
+caminho = Path(__file__).resolve().parent / "data" / "ibov.csv"
 
 # Título e cabeçalho do app
 st.title("Meu primeiro dashboard")
 st.header("Esse é um header")
 
 # Carregar e exibir o dataframe
-#caminho = "C:\\Ludmila\\faculdade\\ProjetoCienciasDadosI\\frontend"
-df = pd.read_csv(caminho+"\\data\\ibov.csv")
+# Verificar se o arquivo existe antes de carregar
+if caminho.exists():
+    df = pd.read_csv(caminho)
+    st.dataframe(df)
+else:
+    st.error(f"Arquivo não encontrado: {caminho}")
 
 # Exemplo de Markdown
 st.markdown(
@@ -46,7 +50,10 @@ with abas[1]:
 # Aba do DataFrame
 with abas[2]:
     st.subheader("Exibição do DataFrame")
-    st.dataframe(df)
+    if caminho.exists():
+        st.dataframe(df)
+    else:
+        st.error("DataFrame não pode ser exibido, pois o arquivo não foi encontrado.")
 
 # Aba do gráfico
 with abas[3]:
